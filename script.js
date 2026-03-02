@@ -24,8 +24,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!email || !endpoint) return; // should be caught by HTML, but just in case
 
-        // UI: make it clear something is happening
-        outputElem.textContent = 'Loading...';
+        // UI: rotate loading messages every 5 seconds
+        const loadingMessages = [
+            'Loading...',
+            'This may take a minute...',
+            'Free tier server spin-up can be slow...',
+            'Still working on it....',
+            'Thanks for your patience...'
+        ];
+        let msgIndex = 0;
+        outputElem.textContent = loadingMessages[msgIndex];
+        
+        const msgInterval = setInterval(() => {
+            msgIndex = (msgIndex + 1) % loadingMessages.length;
+            outputElem.textContent = loadingMessages[msgIndex];
+        }, 5000);
+
         outputElem.classList.add('loading');
         const submitBtn = form.querySelector('button');
         submitBtn.disabled = true;
@@ -37,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (err) {
             outputElem.textContent = `Error: ${err.message}`;
         } finally {
+            clearInterval(msgInterval);
             outputElem.classList.remove('loading');
             submitBtn.disabled = false;
         }
