@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneEleven Task Runner</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+            <img src="LOGO-MARK_GRADIENT_RGB@300x-1-1.png" alt="OneEleven logo" class="logo" />
+            <h1>Application Task</h1>
+            <form id="task-form">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" required />
+                <label for="endpoint">API endpoint URL</label>
+                <input type="url" id="endpoint" name="endpoint" required />
+                <button type="submit">Submit</button>
+            </form>
+            <div id="output" class="output"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
